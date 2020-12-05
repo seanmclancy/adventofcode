@@ -3,10 +3,8 @@ passwords = f.read().splitlines()
 validpasswords = 0
 
 for line in passwords:
-    charrange, character, password = line.split(' ')
-    low, high = charrange.split('-')
-    if password.count(character[0]) >= int(low) and password.count(character[0]) <= int(high):
-        validpasswords += 1
+    charrange, character, password = line.split()
+    low, high = map(int, charrange.split('-'))
+    validpasswords += password.count(character[0]) >= low and password.count(character[0]) <= high
 
 print(validpasswords)
-    
